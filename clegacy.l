@@ -36,7 +36,7 @@ Decl {yylval.kval = "Decl"; return KEYWORD; }
 "}" {yylval.oval="{<-}"; return OPERATOR; }
 [0][xX][0-9a-fA-F]+ {yylval.ival = strtol(yytext, NULL, 16); return INT;}
 [0,1]{8} {yylval.bval = yytext; return BINARY;}
-[_a-zA-Z][_a-zA-Z0-9]+ {yylval.sval = yytext; return IDENTIFIER;}
+[_a-zA-Z][_a-zA-Z0-9]{0,30} {yylval.sval = yytext; return IDENTIFIER;}
 [[:space:]] { /* DO NOTHING: blank spaces are ignored. */}
 "/".*	{ /* DO NOTHING: single -line comments are ignored. */}
 [/][*][^*]*[*]+([^*/][^*]*[*]+)*[/]       { /* DO NOTHING: multi - line commments are ignored */ }
