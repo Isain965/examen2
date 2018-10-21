@@ -5,44 +5,46 @@ int yyerror(char *);
 int yylex();
 %}
 
-%token BOOLCONST IDENT IMP BOOL
-%left IMP
+%token hex bin hexconst binconst identifier
 %left '+'
 %left '*'
 %left '!'
 
+
 %%
 
-prog : decllist instrblock
-     ;
+prog : decllist instrblock;
 
 
-decl : BOOL IDENT ';'
-     ;
+decl : type identifier;
+     
+type : bin | hex;
 
 decllist : decllist decl
           | 
           ;
 
-instrblock : '{' instrlist'}'
+instrblock : '{'instrlist'}'
           ;
 
-instrlist : instrlist instrassign
+instrlist : instrlist assigninstr
           | 
           ;
 
 
-instrassign : IDENT '=' expr ';' 
+assigninstr : identifier '=' expr ';' 
             ;
 
 
 expr : expr '+' expr
      | expr '*' expr
-     | expr IMP expr
+     | expr '&' expr
+     | expr '#' expr
      | '!' expr
      | '(' expr ')'
-     | BOOLCONST
-     | IDENT
+     | hex
+     | bin
+     | identifier
      ;
 
 
@@ -56,7 +58,6 @@ printf("Expresion aceptada \n");
 
 int yyerror(char *s)
 {
-fprintf(stderr,"errorcin: %s\n", s);
+fprintf(stderr,"error: %s\n", s);
 exit(0);
 }
-
