@@ -1,10 +1,8 @@
 Decl main {
-hex variableHEx
-bin
-hex
-bin
-vacaciones
-hex
-=
-10101010
-0xA
+hex variable1
+hex variable2
+
+variable1 = 0xA
+variable2 = 0x1
+
+variable2 = variable1 + variable2
