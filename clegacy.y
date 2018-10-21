@@ -33,9 +33,9 @@ void yyerror(const char* s);
 %%
 c_legacy:
 
-	c_legacy IDENTIFIER OPERATOR IDENTIFIER OPERATOR IDENTIFIER {printf("Bison found a AssingInstr: %s%s%s", $4, $5, $6)}
-	| c_legacy IDENTIFIER OPERATOR INT {printf("Bison encontro asignacion de variable: %s = %d", $2, $3)}
-	| c_legacy IDENTIFIER OPERATOR BINARY {printf("Bison encontro asignacion de variable: %s = %d", $2, $3)}
+	c_legacy IDENTIFIER OPERATOR IDENTIFIER OPERATOR IDENTIFIER {printf("Bison found a AssingInstr: %s%s%s", $4, $5, $6);}
+	| c_legacy IDENTIFIER OPERATOR INT {printf("Bison encontro asignacion de variable: %s = %d", $2, $3);}
+	| c_legacy IDENTIFIER OPERATOR BINARY {printf("Bison encontro asignacion de variable: %s = %d", $2, $3);}
 	| c_legacy KEYWORD IDENTIFIER OPERATOR {printf("Bison found a new method:  %s\n", $3);}
 	| c_legacy KEYWORD IDENTIFIER {printf("Bison found a new variable declaration: %s\n", $3);}
 	| c_legacy KEYWORD {printf("Bison found a keyword: %s\n", $2);}
@@ -43,9 +43,9 @@ c_legacy:
 	| c_legacy INT {printf("Bison found a int: %d\n", $2);}
 	| c_legacy BINARY {printf("Bison found a binary: %s\n", $2);}
 	| c_legacy IDENTIFIER {printf("Bison found a identifier: %s\n", $2);}
-	| IDENTIFIER OPERATOR IDENTIFIER OPERATOR IDENTIFIER {printf("Bison found a AssingInstr: %s%s%s", $3, $4, $5)}
-	| IDENTIFIER OPERATOR INT {printf("Bison encontro asignacion de variable: %s = %d", $1, $2)}
-	| IDENTIFIER OPERATOR BINARY {printf("Bison encontro asignacion de variable: %s = %d", $1, $2)}
+	| IDENTIFIER OPERATOR IDENTIFIER OPERATOR IDENTIFIER {printf("Bison found a AssingInstr: %s%s%s", $3, $4, $5);}
+	| IDENTIFIER OPERATOR INT {printf("Bison encontro asignacion de variable: %s = %d", $1, $2);}
+	| IDENTIFIER OPERATOR BINARY {printf("Bison encontro asignacion de variable: %s = %d", $1, $2);}
 	| KEYWORD IDENTIFIER OPERATOR {printf("Bison found a new method %s\n", $2);}
 	| KEYWORD IDENTIFIER {printf("Bison found a new variable declaration: %s\n", $2);} 
 	| KEYWORD {printf("Bison found a keyword: %s\n", $1);}
