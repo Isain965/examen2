@@ -20,6 +20,11 @@ int line_num = 1;
 
 %%
 [ \n\t\r]+	{ if(yytext=="\n"){line_num ++; return ENDL;};}
+< {/*this symbol is irrelevant*/}
+. {/*this symbol is irrelevant*/}
+> {/*this symbol is irrelevant*/}
+, {/*this symbol is irrelevant*/}
+" {/*this symbol is irrelevant*/}
 auto {yylval.kval= "auto"; return KEYWORD;}
 break {yylval.kval= "break"; return KEYWORD;}
 case {yylval.kval= "case"; return KEYWORD;}
