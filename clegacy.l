@@ -61,23 +61,6 @@ hex {yylval.kval= "hex"; return KEYWORD;}
 "*" {yylval.oval="*"; return OPERATOR; }
 "+" {yylval.oval="+"; return OPERATOR; }
 "(" {yylval.oval="("; return OPERATOR; }
-"\"" {yylval.ssval=34; return SPECIAL_SYMBOL; }
-"#" {yylval.ssval=35; return SPECIAL_SYMBOL; }
-"%" {yylval.ssval=37; return SPECIAL_SYMBOL; }
-"&?" {yylval.ssval=38; return SPECIAL_SYMBOL; }
-"," {yylval.ssval=44; return SPECIAL_SYMBOL; }
-"-" {yylval.ssval=45; return SPECIAL_SYMBOL; }
-"." {yylval.ssval=46; return SPECIAL_SYMBOL; }
-"/" {yylval.ssval=47; return SPECIAL_SYMBOL; }
-"<" {yylval.ssval=60; return SPECIAL_SYMBOL; }
-">" {yylval.ssval=62; return SPECIAL_SYMBOL; }
-"\\" {yylval.ssval=92; return SPECIAL_SYMBOL; }
-"^" {yylval.ssval=94; return SPECIAL_SYMBOL; }
-"_" {yylval.ssval=95; return SPECIAL_SYMBOL; }
-"{" {yylval.ssval=123; return SPECIAL_SYMBOL; }
-"|" {yylval.ssval=124; return SPECIAL_SYMBOL; }
-"}" {yylval.ssval=125; return SPECIAL_SYMBOL; }
-"~" {yylval.ssval=126; return SPECIAL_SYMBOL; }
 "&&" {yylval.doval = "&&"; return DOUBLE_OPERATOR; }
 ">=" {yylval.doval = ">="; return DOUBLE_OPERATOR; }
 "<=" {yylval.doval = "<="; return DOUBLE_OPERATOR; }
