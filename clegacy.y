@@ -18,7 +18,7 @@ void yyerror(const char* s);
 	char *sval;
 	char* kval;
 	char* oval;
-	cahr* bval;
+	char* bval;
 }
 
 /* Define constant-string tokens: */
