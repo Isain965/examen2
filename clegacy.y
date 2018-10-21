@@ -34,14 +34,14 @@ void yyerror(const char* s);
 c_legacy:
 
 	c_legacy KEYWORD IDENTIFIER OPERATOR {printf("Bison found a new mehod:  %s", $3);}
-	| c_legacy KEYWORD IDENTIFIER {printf("Bison found a new variable declaration: %s type %s", $3, $2)}
+	| c_legacy KEYWORD IDENTIFIER {printf("Bison found a new variable declaration: %s type %s", $3, $2);}
 	| c_legacy KEYWORD {printf("Bison found a keyword: %s\n", $2);}
 	| c_legacy OPERATOR {printf("Bison found a operator: %s\n", $2);}
 	| c_legacy INT {printf("Bison found a int: %d\n", $2);}
 	| c_legacy BINARY {printf("Bison found a binary: %s\n", $2);}
 	| c_legacy IDENTIFIER {printf("Bison found a identifier: %s\n", $2);}
 	| KEYWORD IDENTIFIER OPERATOR {printf("Bison foun a new mehod %s", $2);}
-	| KEYWORD IDENTIFIER {printf("Bison found a new variable declaration: %s type %s", $2, $1)} 
+	| KEYWORD IDENTIFIER {printf("Bison found a new variable declaration: %s type %s", $2, $1);} 
 	| KEYWORD {printf("Bison found a keyword: %s\n", $1);}
 	| OPERATOR {printf("Bison found a operator: %s\n", $1);}
 	| INT {printf("Bison found a int: %d\n", $1);}
