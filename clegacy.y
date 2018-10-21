@@ -37,7 +37,7 @@ c_legacy:
 	| c_legacy OPERATOR {printf("Bison found a operator: %s\n", $2);}
 	| c_legacy INT {printf("Bison found a int: %d\n", $2);}
 	| c_legacy BINARY {printf("Bison found a hex: %s\n", $2);}
-	| c_legacy IDENTIFIER {printf("Bison found a identifier: %s\n", $1);}
+	| c_legacy IDENTIFIER {printf("Bison found a identifier: %s\n", $2);}
 	| KEYWORD {printf("Bison found a keyword: %s\n", $1);}
 	| OPERATOR {printf("Bison found a operator: %s\n", $1);}
 	| INT {printf("Bison found a int: %d\n", $1);}
