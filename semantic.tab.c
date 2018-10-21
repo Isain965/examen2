@@ -116,13 +116,12 @@ union YYSTYPE
 {
 #line 6 "semantic.y" /* yacc.c:355  */
 
-        struct example typeexpr;
-	double d;
-	char *s;
-        char t;
-        
+  struct example typeexpr;
+  double d;
+  char *s;
+  char t;
 
-#line 126 "semantic.tab.c" /* yacc.c:355  */
+#line 125 "semantic.tab.c" /* yacc.c:355  */
 };
 
 typedef union YYSTYPE YYSTYPE;
@@ -139,7 +138,7 @@ int yyparse (void);
 
 /* Copy the second part of user declarations.  */
 
-#line 143 "semantic.tab.c" /* yacc.c:358  */
+#line 142 "semantic.tab.c" /* yacc.c:358  */
 
 #ifdef short
 # undef short
@@ -1220,13 +1219,13 @@ yyreduce:
         case 2:
 #line 24 "semantic.y" /* yacc.c:1646  */
     {printf("The type of the result is: %c\n",(yyvsp[0].typeexpr).type);}
-#line 1224 "semantic.tab.c" /* yacc.c:1646  */
+#line 1223 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 4:
 #line 28 "semantic.y" /* yacc.c:1646  */
     {}
-#line 1230 "semantic.tab.c" /* yacc.c:1646  */
+#line 1229 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 5:
@@ -1234,62 +1233,62 @@ yyreduce:
     {if(!find((yyvsp[-1].s))) {place=lookup((yyvsp[-1].s)); place->type=(yyvsp[-2].t);}
                        else {printf("Duplicated declaration %s\n", (yyvsp[-1].s));
                              exit(0);}}
-#line 1238 "semantic.tab.c" /* yacc.c:1646  */
+#line 1237 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 6:
 #line 34 "semantic.y" /* yacc.c:1646  */
     {(yyval.t) ='D';}
-#line 1244 "semantic.tab.c" /* yacc.c:1646  */
+#line 1243 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 7:
 #line 35 "semantic.y" /* yacc.c:1646  */
     {(yyval.t) = 'I';}
-#line 1250 "semantic.tab.c" /* yacc.c:1646  */
+#line 1249 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 8:
 #line 38 "semantic.y" /* yacc.c:1646  */
     {if((yyvsp[-2].typeexpr).type == (yyvsp[0].typeexpr).type) (yyval.typeexpr).type = (yyvsp[-2].typeexpr).type;
 			else yyerror("Type mismatch");}
-#line 1257 "semantic.tab.c" /* yacc.c:1646  */
+#line 1256 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 9:
 #line 40 "semantic.y" /* yacc.c:1646  */
     {if((yyvsp[-2].typeexpr).type == (yyvsp[0].typeexpr).type) (yyval.typeexpr).type = (yyvsp[-2].typeexpr).type;
 			else yyerror("Type mismatch");}
-#line 1264 "semantic.tab.c" /* yacc.c:1646  */
+#line 1263 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 10:
 #line 42 "semantic.y" /* yacc.c:1646  */
     {(yyval.typeexpr).type = (yyvsp[-1].typeexpr).type;}
-#line 1270 "semantic.tab.c" /* yacc.c:1646  */
+#line 1269 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 11:
 #line 43 "semantic.y" /* yacc.c:1646  */
     {(yyval.typeexpr).type = 'I';}
-#line 1276 "semantic.tab.c" /* yacc.c:1646  */
+#line 1275 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 12:
 #line 44 "semantic.y" /* yacc.c:1646  */
     {(yyval.typeexpr).type = 'D';}
-#line 1282 "semantic.tab.c" /* yacc.c:1646  */
+#line 1281 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
   case 13:
 #line 45 "semantic.y" /* yacc.c:1646  */
     {if(find((yyvsp[0].s))) {place=lookup((yyvsp[0].s)); (yyval.typeexpr).type=place->type;}
-                       else {printf("Identifier not declared %s\n", (yyvsp[0].s)); }}
-#line 1289 "semantic.tab.c" /* yacc.c:1646  */
+                       else {printf("Identifier not declared %s\n", (yyvsp[0].s)); exit(0);}}
+#line 1288 "semantic.tab.c" /* yacc.c:1646  */
     break;
 
 
-#line 1293 "semantic.tab.c" /* yacc.c:1646  */
+#line 1292 "semantic.tab.c" /* yacc.c:1646  */
       default: break;
     }
   /* User semantic actions sometimes alter yychar, and that requires

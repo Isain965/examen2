@@ -60,13 +60,12 @@ union YYSTYPE
 {
 #line 6 "semantic.y" /* yacc.c:1909  */
 
-        struct example typeexpr;
-	double d;
-	char *s;
-        char t;
-        
+  struct example typeexpr;
+  double d;
+  char *s;
+  char t;
 
-#line 70 "semantic.tab.h" /* yacc.c:1909  */
+#line 69 "semantic.tab.h" /* yacc.c:1909  */
 };
 
 typedef union YYSTYPE YYSTYPE;
