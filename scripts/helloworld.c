@@ -1,6 +1,8 @@
 Decl main {
 hex variableHEx
 bin
+hex
+bin
 vacaciones
 hex
 =
