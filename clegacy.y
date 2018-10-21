@@ -47,8 +47,8 @@ c_legacy:
 	| c_legacy SPECIAL_SYMBOL {printf("Bison found a special symbol: %d\n", $2);}
 	| c_legacy DOUBLE_OPERATOR {printf("Bison found a double operator: %s\n", $2);}
 	| KEYWORD STRING OPERATOR KEYWORD OPERATOR {printf("Bison found a method: %s\n", $2);}
-        | KEYWORD STRING OPERATOR INT {printf("Bison found a variable definition: %s %d \n", $1, $4);}
-        | KEYWORD STRING OPERATOR FLOAT {printf("Bison found a variable definition: %s %lf \n", $1, $4);}
+    | KEYWORD STRING OPERATOR INT {printf("Bison found a variable definition: %s %d \n", $1, $4);}
+    | KEYWORD STRING OPERATOR FLOAT {printf("Bison found a variable definition: %s %lf \n", $1, $4);}
 	| INT {printf("Bison found a float: %d\n", $1);}
 	| FLOAT {printf("Bison found a string: %f\n", $1);}
 	| STRING {printf("Bison found a string: %s\n", $1);}
