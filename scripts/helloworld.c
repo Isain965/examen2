@@ -1,3 +1,5 @@
+Decl main {
+hex variableHEx;
 bin
 vacaciones
 hex

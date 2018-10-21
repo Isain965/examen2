@@ -22,10 +22,11 @@ int line_num = 1;
 [ \n\t\r]+	{ if(yytext=="\n"){line_num ++; return ENDL;};}
 bin {yylval.kval = "bin"; return KEYWORD; }
 hex {yylval.kval = "hex"; return KEYWORD; }
+Decl {yylval.kval = "Decl"; return KEYWORD}
 "!" {yylval.oval="!"; return OPERATOR; }
 "#" {yylval.oval="#"; return OPERATOR; }
 "&" {yylval.oval="&"; return OPERATOR; }
-"(" {yylval.oval="()"; return OPERATOR; }
+"(" {yylval.oval=yytext; return OPERATOR; }
 ")" {yylval.oval=")"; return OPERATOR; }
 "*" {yylval.oval="*"; return OPERATOR; }
 "+" {yylval.oval="+"; return OPERATOR; }
