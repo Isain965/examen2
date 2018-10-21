@@ -55,12 +55,16 @@ while {yylval.kval= "while"; return KEYWORD;}
 bin {yylval.kval= "bin"; return KEYWORD;}
 hex {yylval.kval= "hex"; return KEYWORD;}
 "=" {yylval.oval="="; return OPERATOR; }
+"(" {yylval.oval="("; return OPERATOR; }
 ")" {yylval.oval=")"; return OPERATOR; }
 ";" {yylval.oval=";"; return OPERATOR; }
 "!" {yylval.oval="!"; return OPERATOR; }
 "*" {yylval.oval="*"; return OPERATOR; }
 "+" {yylval.oval="+"; return OPERATOR; }
-"(" {yylval.oval="("; return OPERATOR; }
+"&" {yylval.oval="&"; return OPERATOR; }
+"#" {yylval.oval="#"; return OPERATOR; }
+"{" {yylval.oval="{"; return OPERATOR; }
+"}" {yylval.oval="}"; return OPERATOR; }
 "&&" {yylval.doval = "&&"; return DOUBLE_OPERATOR; }
 ">=" {yylval.doval = ">="; return DOUBLE_OPERATOR; }
 "<=" {yylval.doval = "<="; return DOUBLE_OPERATOR; }
