@@ -20,6 +20,7 @@ void yyerror(const char* s);
 	char* kval;
 	int ssval;
 	char* doval;
+	char* oval;
 }
 
 /* Define constant-string tokens: */
@@ -32,27 +33,20 @@ void yyerror(const char* s);
 %token <kval> KEYWORD;
 %token <ssval> SPECIAL_SYMBOL;
 %token <doval> DOUBLE_OPERATOR;
+%token <oval> OPERATOR;
 %%
 c_legacy:
 
 	c_legacy KEYWORD STRING SPECIAL_SYMBOL KEYWORD SPECIAL_SYMBOL {printf("Bison found a method: %s\n", $3);}
 	| c_legacy KEYWORD STRING SPECIAL_SYMBOL INT {printf("Bison found a variable definition: %s %d \n", $2, $5);}
 	| c_legacy KEYWORD STRING SPECIAL_SYMBOL FLOAT {printf("Bison found a variable definition: %s %lf \n", $2, $5);}
+	| c_legacy OPERATOR {printf("Bison found a operator: %s\n",$2);}
 	| c_legacy INT {printf("Bison found an int: %d\n", $2);}
 	| c_legacy FLOAT {printf("Bison found a float: %f\n", $2);}
 	| c_legacy STRING {printf("Bison found a string: %s\n", $2);}
 	| c_legacy KEYWORD {printf("Bison found a keyword: %s\n", $2);}
 	| c_legacy SPECIAL_SYMBOL {printf("Bison found a special symbol: %d\n", $2);}
 	| c_legacy DOUBLE_OPERATOR {printf("Bison found a double operator: %s\n", $2);}
-	| KEYWORD STRING SPECIAL_SYMBOL KEYWORD SPECIAL_SYMBOL {printf("Bison found a method: %s\n", $2);}
-        | KEYWORD STRING SPECIAL_SYMBOL INT {printf("Bison found a variable definition: %s %d \n", $1, $4);}
-        | KEYWORD STRING SPECIAL_SYMBOL FLOAT {printf("Bison found a variable definition: %s %lf \n", $1, $4);}
-	| INT {printf("Bison found a float: %d\n", $1);}
-	| FLOAT {printf("Bison found a string: %f\n", $1);}
-	| STRING {printf("Bison found a string: %s\n", $1);}
-	| KEYWORD {printf("Bison found a keyword: %s\n", $1);}
-	| SPECIAL_SYMBOL {printf("Bison found a special symbol: %d\n", $1);}
-	| DOUBLE_OPERATOR {printf("Bison found a double operator: %s\n", $1);}
 	;
 %%
 
