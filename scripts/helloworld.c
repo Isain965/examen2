@@ -2,5 +2,5 @@ bin
 vacaciones
 hex
 =
-1010101
+10101010
 0xA
