@@ -20,10 +20,6 @@ int line_num = 1;
 
 %%
 [ \n\t\r]+	{ if(yytext=="\n"){line_num ++; return ENDL;};}
-< {/*this symbol is irrelevant*/}
-. {/*this symbol is irrelevant*/}
-> {/*this symbol is irrelevant*/}
-, {/*this symbol is irrelevant*/}
 auto {yylval.kval= "auto"; return KEYWORD;}
 break {yylval.kval= "break"; return KEYWORD;}
 case {yylval.kval= "case"; return KEYWORD;}
@@ -56,19 +52,30 @@ unsigned {yylval.kval= "unsigned"; return KEYWORD;}
 void {yylval.kval= "void"; return KEYWORD;}
 volatile {yylval.kval= "volatile"; return KEYWORD;}
 while {yylval.kval= "while"; return KEYWORD;}
-bin {yylval.kval= "bin"; return KEYWORD;}
-hex {yylval.kval= "hex"; return KEYWORD;}
+"!" {yylval.ssval=33; return SPECIAL_SYMBOL; }
+"\"" {yylval.ssval=34; return SPECIAL_SYMBOL; }
+"#" {yylval.ssval=35; return SPECIAL_SYMBOL; }
+"%" {yylval.ssval=37; return SPECIAL_SYMBOL; }
+"&?" {yylval.ssval=38; return SPECIAL_SYMBOL; }
+"(" {yylval.ssval=40; return SPECIAL_SYMBOL; }
+")" {yylval.ssval=41; return SPECIAL_SYMBOL; }
+"*" {yylval.ssval=42; return SPECIAL_SYMBOL; }
+"+" {yylval.ssval=43; return SPECIAL_SYMBOL; }
+"," {yylval.ssval=44; return SPECIAL_SYMBOL; }
+"-" {yylval.ssval=45; return SPECIAL_SYMBOL; }
+"." {yylval.ssval=46; return SPECIAL_SYMBOL; }
+"/" {yylval.ssval=47; return SPECIAL_SYMBOL; }
+";" {yylval.ssval=59; return SPECIAL_SYMBOL; }
+"<" {yylval.ssval=60; return SPECIAL_SYMBOL; }
 "=" {yylval.oval="="; return OPERATOR; }
-"(" {yylval.oval="("; return OPERATOR; }
-")" {yylval.oval=")"; return OPERATOR; }
-";" {yylval.oval=";"; return OPERATOR; }
-"!" {yylval.oval="!"; return OPERATOR; }
-"*" {yylval.oval="*"; return OPERATOR; }
-"+" {yylval.oval="+"; return OPERATOR; }
-"&" {yylval.oval="&"; return OPERATOR; }
-"#" {yylval.oval="#"; return OPERATOR; }
-"{" {yylval.oval="{"; return OPERATOR; }
-"}" {yylval.oval="}"; return OPERATOR; }
+">" {yylval.ssval=62; return SPECIAL_SYMBOL; }
+"\\" {yylval.ssval=92; return SPECIAL_SYMBOL; }
+"^" {yylval.ssval=94; return SPECIAL_SYMBOL; }
+"_" {yylval.ssval=95; return SPECIAL_SYMBOL; }
+"{" {yylval.ssval=123; return SPECIAL_SYMBOL; }
+"|" {yylval.ssval=124; return SPECIAL_SYMBOL; }
+"}" {yylval.ssval=125; return SPECIAL_SYMBOL; }
+"~" {yylval.ssval=126; return SPECIAL_SYMBOL; }
 "&&" {yylval.doval = "&&"; return DOUBLE_OPERATOR; }
 ">=" {yylval.doval = ">="; return DOUBLE_OPERATOR; }
 "<=" {yylval.doval = "<="; return DOUBLE_OPERATOR; }

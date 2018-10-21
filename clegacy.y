@@ -18,8 +18,9 @@ void yyerror(const char* s);
 	float fval;
 	char *sval;
 	char* kval;
-	char* oval;
+	int ssval;
 	char* doval;
+	char* oval;
 }
 
 /* Define constant-string tokens: */
@@ -30,8 +31,9 @@ void yyerror(const char* s);
 %token <fval> FLOAT;
 %token <sval> STRING;
 %token <kval> KEYWORD;
-%token <oval> OPERATOR;
+%token <ssval> SPECIAL_SYMBOL;
 %token <doval> DOUBLE_OPERATOR;
+%token <oval> OPERATOR
 %%
 c_legacy:
 
@@ -42,7 +44,7 @@ c_legacy:
 	| c_legacy FLOAT {printf("Bison found a float: %f\n", $2);}
 	| c_legacy STRING {printf("Bison found a string: %s\n", $2);}
 	| c_legacy KEYWORD {printf("Bison found a keyword: %s\n", $2);}
-	| c_legacy OPERATOR {printf("Bison found a special symbol: %d\n", $2);}
+	| c_legacy SPECIAL_SYMBOL {printf("Bison found a special symbol: %d\n", $2);}
 	| c_legacy DOUBLE_OPERATOR {printf("Bison found a double operator: %s\n", $2);}
 	| KEYWORD STRING OPERATOR KEYWORD OPERATOR {printf("Bison found a method: %s\n", $2);}
         | KEYWORD STRING OPERATOR INT {printf("Bison found a variable definition: %s %d \n", $1, $4);}
