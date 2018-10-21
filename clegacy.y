@@ -15,12 +15,10 @@ void yyerror(const char* s);
 /* Define values */
 %union{
 	int ival;
-	float fval;
 	char *sval;
 	char* kval;
-	int ssval;
-	char* doval;
 	char* oval;
+	cahr* bval;
 }
 
 /* Define constant-string tokens: */
@@ -28,33 +26,18 @@ void yyerror(const char* s);
 
 /* Define terminal symbols: */
 %token <ival> INT;
-%token <fval> FLOAT;
-%token <sval> STRING;
+%token <sval> IDENTIFIER;
 %token <kval> KEYWORD;
-%token <ssval> SPECIAL_SYMBOL;
-%token <doval> DOUBLE_OPERATOR;
-%token <oval> OPERATOR
+%token <oval> OPERATOR;
+%token <bval> BINARY;
 %%
 c_legacy:
 
-	c_legacy KEYWORD STRING OPERATOR KEYWORD OPERATOR {printf("Bison found a method: %s\n", $3);}
-	| c_legacy KEYWORD STRING OPERATOR INT {printf("Bison found a variable definition: %s %d \n", $2, $5);}
-	| c_legacy KEYWORD STRING OPERATOR FLOAT {printf("Bison found a variable definition: %s %lf \n", $2, $5);}
-	| c_legacy INT {printf("Bison found an int: %d\n", $2);}
-	| c_legacy FLOAT {printf("Bison found a float: %f\n", $2);}
-	| c_legacy STRING {printf("Bison found a string: %s\n", $2);}
-	| c_legacy KEYWORD {printf("Bison found a keyword: %s\n", $2);}
-	| c_legacy SPECIAL_SYMBOL {printf("Bison found a special symbol: %d\n", $2);}
-	| c_legacy DOUBLE_OPERATOR {printf("Bison found a double operator: %s\n", $2);}
-	| KEYWORD STRING OPERATOR KEYWORD OPERATOR {printf("Bison found a method: %s\n", $2);}
-    | KEYWORD STRING OPERATOR INT {printf("Bison found a variable definition: %s %d \n", $1, $4);}
-    | KEYWORD STRING OPERATOR FLOAT {printf("Bison found a variable definition: %s %lf \n", $1, $4);}
-	| INT {printf("Bison found a float: %d\n", $1);}
-	| FLOAT {printf("Bison found a string: %f\n", $1);}
-	| STRING {printf("Bison found a string: %s\n", $1);}
-	| KEYWORD {printf("Bison found a keyword: %s\n", $1);}
-	| OPERATOR {printf("Bison found a special symbol: %d\n", $1);}
-	| DOUBLE_OPERATOR {printf("Bison found a double operator: %s\n", $1);}
+	c_legacy KEYWORD {printf("Bison found a keyword: %s\n", $2);}
+	| c_legacy OPERATOR {printf("Bison found a operator: %s\n", $2);}
+	| c_legacy INT {printf("Bison found a int: %d\n", $2);}
+	| c_legacy BINARY {printf("Bison found a hex: %s\n", $2);}
+	| c_legacy IDENTIFIER {printf("Bison found a identifier: %s\n", $2);}
 	;
 %%
 
