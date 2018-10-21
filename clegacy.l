@@ -31,6 +31,6 @@ int line_num = 1;
 [_a-zA-Z][_a-zA-Z0-9]+ {printf("found an identifier: %s\n", yytext);}
 [[:space:]] { /* DO NOTHING: blank spaces are ignored. */}
 "/".*	{ /* DO NOTHING: single -line comments are ignored. */}
-[/][][^][]+([^/][^][]+)[/]       { / DO NOTHING: multi - line commments are ignored */ }
+[/][][^][]+([^/][^][]+)[/]       { /* DO NOTHING: multi - line commments are ignored */ }
 .	{ printf("ignoring....\n"); }
 %%
