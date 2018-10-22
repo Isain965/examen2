@@ -26,21 +26,27 @@ int mquad = 0;
 %%
 programa : decl1 bloqueinstr
           ;
+          
 decl1 : decl1 decl
       |
       ;
+
 decl : BIN ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf("Duplicate identifier %s\n",$2);
 }}
     | HEX ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf("Duplicate identifier %s\n",$2);
 }}
     ;
+
 bloqueinstr : '{'instrasig1'}'
             ;
+
 instrasig1 : instrasig1 instrasig
            |
            ;
+
 instrasig : ID '=' expr';' {if(!find($1))printf("Identifier not defined %s\n",$1); else{loc=lookup($1); if(loc->type==$3.type){$$.type=$3.type;$$.place = strdup(newtemp()); emit("->", $1, $3.place, $$.place);}else yyerror("Incompatible types");}}
           ;
+
 expr : expr '*' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("Incompatible data types"); $$.place = strdup(newtemp());emit("*", $1.place, $3.place, $$.place);}
       |expr '+' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("Incompatible data types"); $$.place = strdup(newtemp());emit("+", $1.place, $3.place, $$.place);}
       |expr '&' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("Incompatible data types"); $$.place = strdup(newtemp());emit("&", $1.place, $3.place, $$.place);}
@@ -72,28 +78,26 @@ struct symbol *
 lookup(char* sym)
 {
   struct symbol *sp = &symtab[symhash(sym)%NHASH];
-  int scount = NHASH;           /* how many have we looked at */
+  int scount = NHASH;
 
   while(--scount >= 0) {
     nprobe++;
     if(sp->name && !strcmp(sp->name, sym)) { nold++; return sp; }
-
-    if(!sp->name) {             /* new entry */
+    if(!sp->name) {
       nnew++;
       sp->name = strdup(sym);
       return sp;
     }
 
-    if(++sp >= symtab+NHASH) sp = symtab; /* try the next entry */
+    if(++sp >= symtab+NHASH) sp = symtab;
   }
   fputs("symbol table overflow\n", stderr); 
-  abort(); /* tried them all, table is full */
-
+  abort();
 }
-char find (char* sym)
-{
+
+char find (char* sym){
   struct symbol *sp = &symtab[symhash(sym)%NHASH];
-  int scount = NHASH;           /* how many have we looked at */
+  int scount = NHASH;
 
   while(--scount >= 0)
     if(sp->name && !strcmp(sp->name, sym)) return 1;
