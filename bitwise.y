@@ -7,7 +7,7 @@ int mquad = 0;
 %}
 
 %union {
-  struct examle typeexpr;
+  struct example typeexpr;
   double d;
   char *s;
   char t;
