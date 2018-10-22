@@ -27,6 +27,10 @@ decllist : decllist decl
 instrblock : '{'instrlist'}'
           ;
 
+assigninstr : identifier '=' expr
+          ;
+
+
 instrlist : instrlist assigninstr
           | 
           ;
