@@ -1,3 +1,0 @@
-Funciones por hacer:
-	* Diferenciar entre operators y special_symbol
-
