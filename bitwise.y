@@ -24,10 +24,10 @@ int mquad = 0;
 %left '+' '#'
 
 %%
-programa : decl1 bloqueinstr
+program : decllist blockinstr
           ;
-          
-decl1 : decl1 decl
+
+decllist : decllist decl
       |
       ;
 
@@ -37,7 +37,7 @@ decl : BIN ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf(
 }}
     ;
 
-bloqueinstr : '{'instrasig1'}'
+blockinstr : '{'instrasig1'}'
             ;
 
 instrasig1 : instrasig1 instrasig
