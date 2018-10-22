@@ -24,37 +24,35 @@ int mquad = 0;
 %left '+' '#'
 
 %%
-programa        :decl1 bloqueinstr
-                ;
-decl1           :decl1 decl
-                |
-                ;
-decl            :BIN ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf("Ya ha declarado este identificador, lo duplicó %s\n",$2);
+programa : decl1 bloqueinstr
+          ;
+decl1 : decl1 decl
+      |
+      ;
+decl : BIN ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf("Ya ha declarado este identificador, lo duplicó %s\n",$2);
 }}
-                |HEX ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf("Ya ha declarado este identificador, lo duplicó %s\n",$2);
+    | HEX ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf("Ya ha declarado este identificador, lo duplicó %s\n",$2);
 }}
-                ;
-bloqueinstr     :'{'instrasig1'}'
-                ;
-instrasig1      :instrasig1 instrasig
-                |
-                ;
-instrasig       :ID '=' expr';' {if(!find($1))printf("Este identificador no fue declarado %s\n",$1);else{loc=lookup($1);if(loc->type==$3.type){$$.type=$3.type;$$.place = strdup(newtemp());emit("->", $1, $3.place, $$.place);}else yyerror("error de incompatibilidad");}}
-                ;
-expr            :expr '*' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("*", $1.place, $3.place, $$.place);}
-                |expr '+' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("+", $1.place, $3.place, $$.place);}
-                |expr '&' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("&", $1.place, $3.place, $$.place);}
-                |expr '#' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("#", $1.place, $3.place, $$.place);}
-                |'!' expr       {$$.type=$2.type;}
-                |'(' expr ')'   {$$.type=$2.type;}
-                |ID             {if(find($1)) {loc=lookup($1); $$.type=loc->type;}else {printf("error de incompatibilidad %s\n", $1);}}
-                |BITCONST       {$$.type='B';}
-                |HEXCONST       {$$.type='H';}
-                ;
+    ;
+bloqueinstr : '{'instrasig1'}'
+            ;
+instrasig1 : instrasig1 instrasig
+           |
+           ;
+instrasig : ID '=' expr';' {if(!find($1))printf("Este identificador no fue declarado %s\n",$1);else{loc=lookup($1);if(loc->type==$3.type){$$.type=$3.type;$$.place = strdup(newtemp());emit("->", $1, $3.place, $$.place);}else yyerror("error de incompatibilidad");}}
+          ;
+expr : expr '*' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("*", $1.place, $3.place, $$.place);}
+      |expr '+' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("+", $1.place, $3.place, $$.place);}
+      |expr '&' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("&", $1.place, $3.place, $$.place);}
+      |expr '#' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("error de incompatibilidad");$$.place = strdup(newtemp());emit("#", $1.place, $3.place, $$.place);}
+      |'!' expr       {$$.type=$2.type;}
+      |'(' expr ')'   {$$.type=$2.type;}
+      |ID             {if(find($1)) {loc=lookup($1); $$.type=loc->type;}else {printf("error de incompatibilidad %s\n", $1);}}
+      |BITCONST       {$$.type='B';}
+      |HEXCONST       {$$.type='H';}
+      ;
 
 %%
-
-
 
 
 static unsigned
@@ -121,14 +119,12 @@ int main(int argc, char **argv)
 {
 int i;
 yyparse();
-printf("¡Correcto!\n");
+printf("The inserted code is correct!\n");
 
-printf("Este es su código intermedio: \n");
+printf("This is their intermediate code: \n");
 for(i=0;i<mquad;i++)
 printf("%s %s %s %s \n",quadtab[i].op, quadtab[i].arg1,
 quadtab[i].arg2, quadtab[i].res);
-
-
 }
 
 int yyerror(char *s)
@@ -136,4 +132,3 @@ int yyerror(char *s)
 fprintf(stderr,"error: %s\n", s);
 exit(0);
 }
-
