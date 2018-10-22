@@ -6,12 +6,12 @@ int ntemp = 0;
 int mquad = 0;
 %}
 
-%union {
-  struct example typeexpr;
-  double d;
-  char *s;
-  char t;
-}
+%union    {
+        struct example typeexpr;
+        double d;
+        char *s;
+        char t;
+        }
 
 %token <t>BIN <t>HEX <typeexpr>BITCONST <typeexpr>HEXCONST <typeexpr><s>ID
 
