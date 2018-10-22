@@ -2,6 +2,11 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+* A01375997 Isain Cuadra Rivas
+* A01376119 Diego Canizales Bollain Goytia
+**/
+
 struct  example  {
   char type;
   double val;

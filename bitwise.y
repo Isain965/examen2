@@ -1,3 +1,8 @@
+/**
+* A01375997 Isain Cuadra Rivas
+* A01376119 Diego Canizales Bollain Goytia
+**/
+
 %{
 #include "bitwise.h"
 #include <stdio.h>
