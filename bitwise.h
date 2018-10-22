@@ -2,14 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct  example  {
-  char type;
-  double val;
-  double dval;
-  int ival;
-  char *place;
-};
-
 struct symbol {
   char type;
   char *name;
