@@ -41,5 +41,4 @@ int yylex();
 struct symbol *loc;
 
 void emit(char *, char *, char *, char *);
-char* newtemp(void);
-~                    
+char* newtemp(void);  
