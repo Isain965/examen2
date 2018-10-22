@@ -1,7 +1,9 @@
 %{
-#include "bitwise.h"
-#include "bitwise.tab.h"
+    #include "bitwise.h"
+    #include "bitwise.tab.h"
 %}
+
+
 %%
 [=();!*+&#{}]   {return(yytext[0]);}
 "bin"           {yylval.t = 'B';return(BIN);}
