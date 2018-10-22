@@ -16,7 +16,7 @@ int mquad = 0;
 %token <t>BIN <t>HEX <typeexpr>BITCONST <typeexpr>HEXCONST <typeexpr><s>ID
 
 %type <typeexpr> expr
-%type <typeexpr> instrasig
+%type <typeexpr> itg
 %type <typeexpr> decl
 
 %left '!'
@@ -37,14 +37,14 @@ decl : BIN ID ';'{if(!find($2)) {place=lookup($2); place->type=$1;}else {printf(
 }}
     ;
 
-blockinstr : '{'instrasig1'}'
+blockinstr : '{'itglist'}'
             ;
 
-instrasig1 : instrasig1 instrasig
+itglist : itglist itg
            |
            ;
 
-instrasig : ID '=' expr';' {if(!find($1))printf("Identifier not defined %s\n",$1); else{loc=lookup($1); if(loc->type==$3.type){$$.type=$3.type;$$.place = strdup(newtemp()); emit("->", $1, $3.place, $$.place);}else yyerror("Incompatible types");}}
+itg : ID '=' expr';' {if(!find($1))printf("Identifier not defined %s\n",$1); else{loc=lookup($1); if(loc->type==$3.type){$$.type=$3.type;$$.place = strdup(newtemp()); emit("->", $1, $3.place, $$.place);}else yyerror("Incompatible types");}}
           ;
 
 expr : expr '*' expr  {if($1.type == $3.type) $$.type = $1.type;else yyerror("Incompatible data types"); $$.place = strdup(newtemp());emit("*", $1.place, $3.place, $$.place);}
